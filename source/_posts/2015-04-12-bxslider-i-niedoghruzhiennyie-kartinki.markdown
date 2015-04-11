@@ -3,7 +3,7 @@ layout: post
 title: "bxSlider и недогруженные картинки"
 date: 2015-04-12 01:10:52 +0300
 comments: true
-categories: [html, js, bxSlider, frontend]
+categories: [bxSlider, js, html, frontend]
 ---
 В версии [BxSlider](http://bxslider.com/options) v4.1.2 имеется досадный баг (или фича), который делал мне нервы. Все дело в том, что bxSlider на столько хорош, что умеет делать предварительную загрузку изображений (и даже содержимого iframe) перед тем, как начнет свою полноценную работу. И вот тут то и кроется эта самая фича ака баг.
 <!-- more -->
