@@ -3,7 +3,7 @@ title: Почему я не использую препроцессоры
 date: 2016-12-14 23:32:32
 tags: [translate, web, css, preprocessors]
 cover: /images/20161214/1.jpg
-description: Даже имея опыт разработки в течение многих лет, мы забываем одну действительно важную вещь под названием Web Accessibility (Доступность в WEB).
+description: Я не использую препроцессоры, а точнее, никогда не использую в своих личных проектах, так как препроцессоры для меня, это решение с дополнительными проблемами.
 ---
 
 Это перевод статьи [Why I Don’t Use CSS Preprocessors](https://meiert.com/en/blog/20161214/no-css-preprocessors/ "Why I Don’t Use CSS Preprocessors") автора [Jens Oliver Meiert ](https://meiert.com/en/biography/).
