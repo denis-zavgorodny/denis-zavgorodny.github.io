@@ -2,7 +2,7 @@
 title: rem и em, и почему скорее всего они вам не нужны
 date: 2017-04-06 22:55:00
 tags: [translate, web, css]
-cover: /images/accessibility-pic1.jpeg
+cover: http://denis-zavgorodny.github.io/images/20170406/pic1.jpeg
 description: Наверняка вам приходилось слышать, что для задания размеров текста и блоков на вашем сайте вы должны использовать em или rem единицы, а не эти старомоные пикселы.
 ---
 
