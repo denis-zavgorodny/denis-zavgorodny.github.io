@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Оптимизация mp4 видео для быстрой загрузки | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="С уходом Flash и ростом доли мобильных устройств все большую популярность приобретает html5 видео. Тем не менее, видео файлы также требуют некоторых оптимизаций, которые необходимо выполнить для того, чтоб эффективно использовать их на сайте.">
+  
+
+  
+  
+  <meta name="keywords" content="translate,web,perfomance,mp4,stream">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Оптимизация mp4 видео для быстрой загрузки"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/images/20161225/CstkNXeVMAAEgvL.jpg" />
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Оптимизация mp4 видео для быстрой загрузки</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/01/30/mp4-web-optimizing/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-01-30T20:07:25.000Z">
+          2017-01-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>Это перевод статьи <a href="http://rigor.com/blog/2016/01/optimizing-mp4-video-for-fast-streaming" target="_blank" rel="noopener">Optimizing MP4 Video for Fast Streaming</a> автора <a href="http://rigor.com/blog/author/billyhoffman" target="_blank" rel="noopener">BILLY HOFFMAN</a>.</p>
+<p>С уходом Flash и ростом доли мобильных устройств все большую популярность приобретает html5 видео. В одной из статей мы даже <a href="http://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video" target="_blank" rel="noopener">рассказывали</a> о том, как повысить скорость вашего сайта заменив GIF анимации html5 видеороликами. Тем не менее, видео файлы также требуют некоторых оптимизаций, которые необходимо выполнить для того, чтоб эффективно использовать их на сайте. Наиболее важным шагом оптимизации можно назвать оптимизацию видео контента к потоковому воспроизведению на сайте. Без такой оптимизации воспроизведение видео может быть задержано на сотни миллисекунд и мегабайты трафика ваших пользователей будут потрачены впустую из-за безуспешных попыток воспроизвести ролик. В этой статье я расскажу вам, как оптимизировать ваши видео файлы для потокового воспроиведения видео.<br><a id="more"></a></p>
+<p><strong>Как работает потоковое воспроизведение MP4</strong></p>
+<p>Как говорилось <a href="http://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video" target="_blank" rel="noopener">в одной из статей</a> HTML5 видео стало кроссбраузерной альтернативой воспроизведению видео через Flash. В 2016 году H.264 кодированое видео в контейнере MP4 (которое дальше будем называть MP4 видео) превратилось в стандартный формат для онлайн видео на сайтах. Потому, когда мы говорим об оптимизации HTML5 видео, то имеем ввиду то, как оптимизировать MP4 видео для быстрого воспроизведения. И дальше мы будем говорить о структуре mp4 файла и том, как работает потоковое видео.</p>
+<p><a href="http://www.adobe.com/devnet/video/articles/mp4_movie_atom.html" target="_blank" rel="noopener">MP4 файлы состоят из блоков данных</a>, именуемых атомами. Есть атомы, которые содержат в себе данные о субтитрах и разделах, есть атомы, содержащие непосредстенно видео и аудио данные. Мета-данные о том, где искать аудио и видео атомы, как воспроизводить видео, размере кадров, битрейте, это все хранится в специальном атоме под названием <code>Moov</code>. Вы можете представить <code>Moov</code>, как своего рода оглавление файла MP4.</p>
+<p>При воспроизведении видео плеер (программа для воспроизведения видео) сначала просматривает MP4 файл, находит в нем атом <code>Moov</code>, а затем использует его для того, чтоб найти начало аудио и видео данных и начать воспроизводить их. К сожалению, атомы могут присутствовать в файле в производльном порядке, потому плеер не может заранее знать где находится <code>Moov</code>. Если у вас уже есть все содержимое видеофайла, то плеер может отыскать его. Однако, есть и другой вариант, когда у вас нет всего файла, например, потоковое HTML5 видео. Вся суть потокового видео состоит в том, что вы можете начать его просмотр без необходимости ожидания его полной загрузки.</p>
+<p>Для воспроизведения потокового видео ваш браузер запрашивает файл и по мере его получения ищет в нем атом <code>Moov</code>. Если атом <code>Moov</code> не найден в начале файла браузер должен либо загрузить весь файл, чтоб найти этот атом, или начать загружать небольшие части видео-файла, начиная с самого конца файла, в попытке найти <code>Moov</code>.</p>
+<p>Такие поиски <code>Moov</code> атома приводят к временным задержкам и расходованию трафика. К сожалению, видео не может быть воспроизведено до тех пор, пока не будет найдет этот самый <code>Moov</code> атом. На скриншоте ниже мы можем видеть запросы браузера к серверу в попытках воспроизвести неоптимизированный MP4 файл как HTML5 видео:</p>
+<p><img src="/images/20170130/mp4-no-moov.png" alt="Скриншот профайлера Google Chrome неоптимизированного MP4" title="Скриншот профайлера Google Chrome неоптимизированного MP4"></p>
+<p>Вы можете видеть, как браузер делает три запроса прежде чем он может начать воспроиводить видео. В первом запросе браузер загружет первые 552Кб видео при помощи <a href="https://habrahabr.ru/post/138504/" target="_blank" rel="noopener">HTTP range request</a>. Мы можем судить об этом по коду ответа <code>206 Partial Content</code> и просматривая заголовки запросов. Однако, атома <code>Moov</code> еще не существует, так что браузер не может начать воспроизведение видео. Затем, браузер запрашивает 21Кб с конца файла используя еще один запрос диапазона данных. В результате полученных данных он находит <code>Moov</code> атом, который сообщает ему каким образом запускать воспроизведение видео и аудио потоков. И наконец, браузер делает третий и последний запрос, для того, чтобы получить содержимое аудио и видео потока. После чего браузер может начать воспроизведение данных. Этот процесс требует около половины мегабайта полосы пропускания канала и откладывает воспроизведение на 210мс. И все только потому, что браузер не может найти атом <code>Moov</code>. </p>
+<p>Это может усугубиться, если вы не настроили на своем сервере поддержку запросов HTTP range request. Браузер не сможет загружать файл частями и будет вынужден скачать весь файл для того чтоб найти в нем атом <code>Moov</code>. Это еще одна весомая причина оптимизировать свой сайт для поддержки потокового видео.</p>
+<p>Идеальный способ подготовить MP4 файл для потокового воспроизведения HTML5 видео это организовать MP4 файл таким образом, чтоб атом <code>Moov</code> находился в самом его начале. Таким образом, браузер может избежать загрузки всего файла или попыток скачать другие части файла в поисках <code>Moov</code>. Скриншот с запросами для воспроизведения оптимизированного потокового видео представлен ниже:</p>
+<p><img src="/images/20170130/mp4-fast-start.png" alt="Скриншот профайлера Google Chrome оптимизированного MP4" title="Скриншот профайлера Google Chrome оптимизированного MP4"></p>
+<p>Видео с <code>Moov</code> атомом в начале файла будет загружаться и проигрываться быстрее, в результате повышая удобство пользования вашим сайтом.</p>
+<p><strong>Оптимизация MP4 для быстрой потоковой передачи</strong></p>
+<p>Мы уже увидели, что для оптимизации HTML5 видео необходимо реогранизовать атомы MP4 файла таким образом, чтоб атом <code>Moov</code> находился в самом начале. Как же нам это сделать? Большинство программ кодирования видео имеют опцию “оптимизировать для web” или “оптимизировать для потокового воспроизведения”, которые как раз и сделают за нас эту самую оптимизацию. Вы должны следить за настройками кодирования видео, чтоб быть уверенными в том, что получите оптимизированный файл. Например, на рисунке ниже мы видим <a href="https://handbrake.fr/" target="_blank" rel="noopener">open source видео кодер Handbrake</a>, который имеет опцию “Web Optimized” в своих настройках. Эта настройка и перемещает атом <code>Moov</code> в начало файла.</p>
+<p><img src="/images/20170130/handbrake.png" alt="Скриншот программы Handbrake" title="Скриншот программы Handbrake"></p>
+<p>Это решает проблему если вы создаете MP4 файл из оригинального исходного видео, но, что, если у вас уже есть mp4 файл?</p>
+<p>Вы можете преобразовывать сущестующие видео файлы, чтоб оптимизировать его для потокового воспроизведения. Видеокодер <a href="https://www.ffmpeg.org/" target="_blank" rel="noopener">с открытым исходным кодом FFMpeg</a> может реогранизовать сруктуру существующего MP4 файла и размещать <code>Moov</code> в начале файла. В отличие от полного перекодирования файла такой процесс требует меньше ресурсов процессора, так как трансформация файла является более простой операцией. Ниже приведен пример команды для оптимизации файла input.mp4 при помощи утилиты FFMpeg. В результате мы получаем оптимизированный файл output.mp4:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -movflags faststart -acodec copy -vcodec copy output.mp4</span><br></pre></td></tr></table></figure>
+<p>Параметр <code>-movflags faststart</code> как раз и сообщает видеокодеру FFMpeg о том, что необходимо изменить порядок атомов таким образом, чтоб атом <code>Moov</code> оказался в самом начале файла. Также мы использовали опцию <code>copy</code> для того, чтоб FFMpeg скопировал аудио и видео данные, вместо их повторного перекодирования. </p>
+<p>Для клиентов сервиса <a href="http://rigor.com/features#optimization" target="_blank" rel="noopener">Rigor мы добавили еще один пункт в наш чеклист анализа производительности Zoompf</a>, цель которого обнаружение неоптимизированных для воспроизведения HTML5 файлов MP4 видео. Если просто хотите проверить ваш сайт, вы можете <a href="http://rigor.com/free" target="_blank" rel="noopener">воспользоваться нашим бесплатным сервисом</a>.</p>
+<p><strong>Выводы</strong></p>
+<p>Если вы конвертируете ваши анимированные GIF в MP4 видео или уже имеете множество MP4 видео роликов, вы можете сделать загрузку и воспроизведение этих роликов быстрее, если проведете оптимизаицю структуры файлов. Изменив порядок атомов и переместив <code>Moov</code> в самое начало файла позволяет браузеу избежать отправки дополнительных HTTP запросов для поиска <code>Moov</code>. Это позволит брузеру мгновенно начать воспроизведение потокового видео. Вы можете настроить эту опцию при первоначальном декодировании файла. Если у вас уже есть существующий файл, то вы можете использовать программу FFMpeg для того, чтоб изенить порядок следования атомов в фйле MP4 без модификации его содержимого. </p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/translate/">translate</a><a href="/tags/web/">web</a><a href="/tags/perfomance/">perfomance</a><a href="/tags/mp4/">mp4</a><a href="/tags/stream/">stream</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>webp - уже пора? | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="webp это “новый” формат изображений для web от google. Новый, в сравнении с общепринятыми форматами jpg, png, gif. По заявлениям самого google их формат на 25-34% “легче” по сравнению с jpeg форматом (по SSIM) и на 26% меньше чем png по тем же оценкам. В реальности же легко можно получить десятикратный выигрыш в размере файла в случае конвертации больших jpg изображений в webp (например, вот таким сервисом или любым другим доступным вам способом).">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="webp - уже пора?"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>webp - уже пора?</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2015/05/20/webp-uzhie-pora/" rel="bookmark">
+        <time class="entry-date published" datetime="2015-05-20T07:25:57.000Z">
+          2015-05-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>webp</strong> это “новый” формат изображений для web от google. Новый, в сравнении с общепринятыми форматами jpg, png, gif. По заявлениям самого <a href="https://developers.google.com/speed/webp/docs/webp_lossless_alpha_study#results" target="_blank" rel="noopener">google</a> их формат на 25-34% “легче” по сравнению с jpeg форматом (по <a href="https://ru.wikipedia.org/wiki/SSIM" target="_blank" rel="noopener">SSIM</a>) и на 26% меньше чем png по тем же оценкам. В реальности же легко можно получить <strong>десятикратный</strong> выигрыш в размере файла в случае конвертации больших jpg изображений в webp (например, вот таким <a href="http://image.online-convert.com/ru/convert-to-webp" target="_blank" rel="noopener">сервисом</a> или любым другим доступным вам способом).<br><a id="more"></a></p>
+<p>Чтоб начать использовать webp достаточно просто указать путь к файлу в src тега <code>img</code> или использовать css свойство <code>background-image</code>. <strong>Все!</strong> Вы сэкономили драгоценные секунды во времени загрузки сайта и трафик пользователей. </p>
+<p>Но, есть и обратная сторона, к сожалению, пока поддержка этого формата <a href="http://caniuse.com/#feat=webp" target="_blank" rel="noopener">оставляет желать лучшего</a>. Мы не имеем даже Chrome+Opera+Firefox+Safari связки, зато имеем поддержку Android (начиная с версии 4.0, что дает возможность использовать изображения webp в мобильных приложениях, где трафик очень важен).</p>
+<p>В любом случае, всегда можно сделать приятно вашим пользователям с наличием Google Chrome и Opera, а остальные пользователи получат обычный jpg или png.</p>
+<p><strong>С чего начать</strong><br>Начать нужно с конвертации изображений в webp формат. Можно подготовить изображения <a href="https://www.npmjs.com/package/grunt-webp-compress" target="_blank" rel="noopener">заранее</a> (<a href="https://github.com/somerandomdude/grunt-webp" target="_blank" rel="noopener">еще</a>), конвертировать <a href="https://www.google.com.ua/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=webp%20online" target="_blank" rel="noopener">online</a> или готовить webp на сервере.</p>
+<p>Вариант с конвертацией на сервере видится наиболее интересным, так как готовить нужные webp вы можете сразу после загрузки изображений (jpg, png) на сайт (или в момент первого обращения к картинке по http).</p>
+<p>Решений тут не так много. Например, google предоставляет консольную <a href="https://developers.google.com/speed/webp/docs/cwebp" target="_blank" rel="noopener">утилитку</a> для конвертации, но, вы должны скомпилировать ее из исходников, а такую возможность имеют далеко не все.<br>К счастью, ImageMagic также поддерживает работу с изображениями в формате webp и вы можете преобразовывать изображения при помощи,  например, php и <a href="http://php.net/manual/ru/book.imagick.php" target="_blank" rel="noopener">класса</a> <code>Imagick</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$im = new Imagick();</span><br><span class="line">$im-&gt;readImage($sourceFile);</span><br><span class="line">$im-&gt;stripImage();</span><br><span class="line">$im-&gt;setImageFormat(&quot;webp&quot;);</span><br><span class="line">$im-&gt;setResolution(72, 72);</span><br><span class="line">$im-&gt;setImageAlphaChannel(imagick::ALPHACHANNEL_ACTIVATE);</span><br><span class="line">$im-&gt;setBackgroundColor(new ImagickPixel(&apos;transparent&apos;));</span><br><span class="line">$im-&gt;setCompression(true);</span><br><span class="line">$im-&gt;setImageCompressionQuality(90);</span><br><span class="line">$im-&gt;writeImage($destinationFile);</span><br><span class="line">$im-&gt;destroy();</span><br></pre></td></tr></table></figure>
+<p><code>setImageCompressionQuality</code> установите на свой вкус.</p>
+<p>В конце концов, можно просто включить флаг <code>convert_jpeg_to_webp</code> в вашем NGINX c <a href="https://developers.google.com/speed/pagespeed/module/filter-image-optimize" target="_blank" rel="noopener">PageSpeed</a> (кстати, PageSpeed для Apache тоже поддерживает такую возможность).</p>
+<p>Так почему же мы до сих пор не используем webp? Я вот задумался.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/html/">html</a>, <a href="/categories/html/google/">google</a>, <a href="/categories/html/google/webp/">webp</a>, <a href="/categories/html/google/webp/images/">images</a>
+    </span>
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>

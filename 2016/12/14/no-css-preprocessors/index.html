@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Почему я не использую препроцессоры | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="Я не использую препроцессоры, а точнее, никогда не использую в своих личных проектах, так как препроцессоры для меня, это решение с дополнительными проблемами.">
+  
+
+  
+  
+  <meta name="keywords" content="translate,web,css,preprocessors">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Почему я не использую препроцессоры"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/images/20161214/1.jpg" />
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Почему я не использую препроцессоры</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/12/14/no-css-preprocessors/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-12-14T21:32:32.000Z">
+          2016-12-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>Это перевод статьи <a href="https://meiert.com/en/blog/20161214/no-css-preprocessors/" title="Why I Don’t Use CSS Preprocessors" target="_blank" rel="noopener">Why I Don’t Use CSS Preprocessors</a> автора <a href="https://meiert.com/en/biography/" target="_blank" rel="noopener">Jens Oliver Meiert </a>.</p>
+<p>Хоть и с опозданием, но хочу присоединиться к <a href="http://www.456bereastreet.com/archive/201603/why_i_dont_use_css_preprocessors/" target="_blank" rel="noopener">Роджеру Йохансону (Roger Johansson)</a>: я не использую препроцессоры, а точнее, никогда не использую в своих личных проектах, так как препроцессоры для меня, это решение с дополнительными проблемами.<br><a id="more"></a></p>
+<p><img src="/images/20161214/1.jpg" alt="Write wet css, but use preprocessors" title="Write wet css, but use preprocessors"></p>
+<p>И мои причины практически полностью совпадают с причинами Роджера:</p>
+<ul>
+<li><p>я не уверен, что проблемы, которые решает препроцессор достаточно серьезные чтобы оправдать усилия, а их решения зачастую создают большие проблемы, чем те, которые они решают;</p>
+</li>
+<li><p>я хочу иметь полный контроль над моим CSS, а также я хочу знать что будет отправлено в браузер прежде чем CSS будем минификована и сжата (этот пункт меня не сильно волнует, потому что часть проблем может быть решена в будущем при помощи более совершенных инструментов);</p>
+</li>
+<li><p>я не хочу изучать и зависеть от нестандарного синтаксиса CSS, я и моя команда не хотим изучать несколько синтаксисов;</p>
+</li>
+<li><p>я хочу, чтоб мой исходный CSS мог быть использован в проекте в любое время, и если процесс сборки завершится с ошибкой я хочу иметь возможность использовать свой исходный CSS в качестве резервного решения;</p>
+</li>
+<li><p>я не хочу ожидать результатов компиляции для того чтоб увидеть результаты изменений в моем CSS;</p>
+</li>
+<li><p>ну и в дополнение, я всегда могу получить функциональность препроцессора, испольуя языки вроде PHP, так же как Берт Бос делает это в <a href="https://www.w3.org/People/Bos/CSS-variables" target="_blank" rel="noopener">своих доводах против CSS переменных</a>.</p>
+</li>
+</ul>
+<p>Единственное, в чем я не согласен с Роджером, так это в том, что мы таки можем писать <a href="https://meiert.com/en/blog/20141009/css-dry-and-optimization/" target="_blank" rel="noopener">DRY CSS</a> без препроцессоров. Принцип “не повторяй себя” должен быть основопологающим, он должен стать частью нашей профессии, а так как мы еще не можем автоматизировать процесс создания DRY CSS, мы должны заботиться об этом сами, в первую очередь для того, чтоб наш CSS было легко дорабатывать.</p>
+<p>Что касается пост-процессоров, то я не использую и их (по крайней мере в своих персональных проектах), но, это совсем другая история. Мне есть что ответить Роджеру. Посмотрим что он скажет ;)</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/translate/">translate</a><a href="/tags/web/">web</a><a href="/tags/css/">css</a><a href="/tags/preprocessors/">preprocessors</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>

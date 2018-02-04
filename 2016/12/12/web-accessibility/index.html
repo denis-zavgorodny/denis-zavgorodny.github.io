@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Доступность в Веб – заботливая разработка | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="Даже имея опыт разработки в течение многих лет, мы забываем одну действительно важную вещь под названием Web Accessibility (Доступность в WEB).">
+  
+
+  
+  
+  <meta name="keywords" content="translate,web,accessibility">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Доступность в Веб – заботливая разработка"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/images/accessibility-pic1.jpeg" />
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Доступность в Веб – заботливая разработка</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/12/12/web-accessibility/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-12-11T23:17:39.000Z">
+          2016-12-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>Это перевод статьи <a href="https://medium.com/@paramsingh_66174/web-accessibility-developing-web-with-empathy-2aee08ebe97c#.tbcjnx5sc" title="Web Accessibility — Developing web with empathy" target="_blank" rel="noopener">Web Accessibility — Developing web with empathy</a> автора <a href="https://medium.com/@paramsingh_66174?source=post_header_lockup" target="_blank" rel="noopener">Param Singh</a>.</p>
+<p><strong><em>От переводчика</em></strong><br><em>Эта статья начинает серию переводов интересных мне статей на тему web и frontend. Надеюсь, такая практика подтянет мой английский и принесет что-то полезное</em></p>
+<p>Даже имея за плечами многолетний опыт разработки, мы забываем одну действительно важную вещь под названием Web Accessibility (Доступность в WEB).<br><a id="more"></a></p>
+<h2 id="Что-такое-доступность"><a href="#Что-такое-доступность" class="headerlink" title="Что такое доступность?"></a>Что такое доступность?</h2><p><strong>Давайте спросим WIKI</strong></p>
+<blockquote>
+<p>Accessibility or A11y refers to the design of products, devices, services, or environments for people who experience disabilities.</p>
+</blockquote>
+<p>Доступность или A11y – это нечто о разработке продуктов, устройств, предоставлении услуг для людей с ограниченными возможностями.</p>
+<p><img src="/images/accessibility-pic1.jpeg" alt="На изображении показана клавиатура и на клавише Enter изображено инвалидное кресло" title="На изображении показана клавиатура и на клавише Enter изображено инвалидное кресло"></p>
+<p>Таким образом, делая свои приложения досутпным, мы расширяем круг наших пользователей людьми с ограниченными возможностями. Вот выдержка из <a href="https://www.w3.org/WAI/intro/accessibility.php" target="_blank" rel="noopener">W3</a>.</p>
+<blockquote>
+<p>Веб доступность означает, что люди с ограниченными возможностями могут использовать интернет. А точнее, что люди с ограниченными возможностями могут воспринимать, понимать, перемещаться и взаимодействовать с интернет страницей или приложением. Веб досутпность также приносит пользу и другим, например, пожилым людям, которые теряют свои способности из-за старения.</p>
+</blockquote>
+<p><strong>WCAG</strong>: The Web Content Accessibility Guidelines (руководство по доступности веб-контента) является частью основных принципов доступности веб-сайтов, опубликованых Web Accessibility Initiative(WAI) и консорциумом W3C.</p>
+<p><strong>WAI-ARIA</strong>: Web Accessibility Initiative — Accessible Rich Internet Applications – это техническая спецификация, опубликованая W3C, которая определяет то, как повысить досутпность веб-страниц, в том числе страниц с динамическим контентом и UI компонентами разработанными с использованием AJAX.</p>
+<h2 id="Почему-это-должно-меня-волновать"><a href="#Почему-это-должно-меня-волновать" class="headerlink" title="Почему это должно меня волновать?"></a>Почему это должно меня волновать?</h2><p>Мы, разработчики, привыкли работать по принципу БРП (Быстрая Разработка Приложений). Мы постоянно спешим закончить свой проект в установленные сроки дедлайнов и используем для этого ванильные фреймворки и инструменты. И в этой беготне мы забываем об идеях ARIA (Доступные Насыщенные Интернет Приложения) и думаем, что нашим веб-сайтом будут пользоваться такие же люди, как и мы. Эта мысль очень опасная как для вас, так и для ваших пользователей. На самом деле, большинство Frontend разработчиков, которых я знаю и с которыми общался, даже не знают что такое ARIA и вообще доступность, потому что у них нет повода задуматься над этим. Мы рассматриваем это как “допольнительный” функционал для наших приложений. Я тоже привык думать так же еще с тех пор, как начал использовать bootstrap в те старые добрые времена. Я видел эти бесполезные aria-* и role аттрибуты и, если честно, удалял их из своей разметки. Но теперь, узнав их значение, я понимаю всю важность их использования.</p>
+<h2 id="Понимайте-ваших-пользователей"><a href="#Понимайте-ваших-пользователей" class="headerlink" title="Понимайте ваших пользователей"></a>Понимайте ваших пользователей</h2><p>Одним из важных шагов при создании ARIA приложений является понимание разнообразия ваших пользователей. Есть люди, которые ограничены в своих возможностях из-за различных проблем с визуальным восприятием, моторикой, слухом, речью или восприятием информации. Из-за этого их способы взаимодействия с вашим приложением отличаются. Многие из них для работы с вашим приложением используют голосовое чтение с экрана, устройства Брайля или отслеживание направления взгляда. Такие ограничения возможностей у ваших пользователей могут быть временными или постоянными. В действительности, в нашей жизни, мы все оказываемся в такой ситуации в той или иной мере, например, поломав руку, получив проблемы со зрением и т.д. Таким образом, если вы будете разрабатывать ваше приложение с использованием правильных веб-стандартов, это поможет вашим пользователям воспринимать веб-контент без труда, что в противном случае могло быть вообще невозможным.</p>
+<h2 id="Как-я-могу-сделать-свое-веб-приложение-доступным"><a href="#Как-я-могу-сделать-свое-веб-приложение-доступным" class="headerlink" title="Как я могу сделать свое веб-приложение доступным?"></a>Как я могу сделать свое веб-приложение доступным?</h2><p>Окей, достаточно теории, давайте научимся делать на самом деле доступные ARIA веб-приложения. Вот несколько шагов.</p>
+<p><strong>Управление фокусом:</strong> Первым делом вы должны удостовериться, что вашим приложением можно пользоваться используя лишь клавиатуру. Под этим я имею ввиду использование Tab-ов и фокусов. Элементы интерфейса должны иметь возможность принимать фокус, обрабатывать клик при нажатии Enter или просто принимать ввод текста от нажатий клавиш на клавиатуре. Да, для людей с нарушением моторики или визуального восприятия, тех, кто не в состоянии использовать указатель мыши, крайне важным будем использование клавиатуры для доступа к вашему приложению. Следовательно, управление фокусом в вашем приложении является очень важным шагом на пути к тому, что бы сделать ваше веб-приложение доступным.</p>
+<p>Все нативные элементы, такие как кнопки, поля ввода по умолчанию имеют возможность получать фокус, но проблема начинается тогда, когда вы создаете собственные элементы или <strong>веб-компоненты</strong> (должен сказать, сейчас это является трендом в создании веб-приложений). Я думаю, никто не хочет видеть эти отвратительные переключатели и флажки, автокомплиты, поля для загрузки файлов и т.д. И, идя на поводу UI/UX дизайнеров, мы создаем пользовательские элементы и веб-компоненты, но напрочь забываем об управлении фокусом у этих компнент. На самом деле, существует множество рекомендаций на сайте <a href="https://www.w3.org/TR/wai-aria-practices-1.1/" target="_blank" rel="noopener">w3</a>. Следует соблюдать их при создании собственных веб-компонентов.</p>
+<p>Говоря о фокусировании на элементе с испоользоваием клавиши Tab для перемещения фокуса вперед, на следующий элемент, и Shift + Tab для перемещения к предыдущенму элементу, мы, как разработчики, должны отдать должное такой важной составляющей доступности. Представьте себе пользователя со слабым зрением, который применяет программу чтения с экрана (screen reader) для того, чтоб узнать что-то о следующем элементе, используя перемещение фокуса, и когда фокус переходит на неподходящий элемент, не несущий полезной информации, такой как иконка оформления в вашем приложении, пользователь может быть сбит с толку. Следовательно, вам бы хотелось предоставлять какую-то осмысленную информацию об элементе, когда пользователь нажимает tab и перемещает фокус. Отличным примером может служить наш любимый <a href="https://github.com/" target="_blank" rel="noopener">github.com</a>.</p>
+<p><img src="/images/accessibility-pic2.gif" alt="Анимированный скриншот панели управления сайта github.com" title="Анимированный скриншот панели управления сайта github.com"></p>
+<p>При нажатии клавиши Tab после загрузки страницы github вы видите “Skip to Content” – div, который скрывается после того, как вы начинаете навигацию по странице.</p>
+<p>Это лишь один из примеров, основное применение заметно, когда вы пытаетесь заполнить форму, и эта форма состоит из пользовательских элементов. И если вы не позаботитесь об управлении фокусом, пользователи могут не заполнить форму. Таким образом, очень важно выполнить требования <a href="https://www.w3.org/TR/wai-aria-practices-1.1/" target="_blank" rel="noopener">w3</a> при создании пользовательских компонент. На codepen я создал пример с правильным управлением фокусом по пользовательским компонентам-закладкам, используя технику под названием блуждающий фокус (Roving Focus). Техника заключается в том, что изначальный tabindex для всех элементов (в нашем случае закладок) устанавливается в значение -1, а затем для того элемента, которому нужно передать фокус tabindex устанавливается в 0, при этом смещение осуществаляется прослушиванием нажатием клавиш навигации.</p>
+<p><img src="/images/accessibility-pic3.gif" alt="Анимированный скриншот реализации техники блуждающего фокуса" title="Анимированный скриншот реализации техники блуждающего фокуса"></p>
+<p>Точно также, если вы создаете группы флажков или переключеталей, вы должны заботиться об их фокусе и событиях клавиатуры. При этом можно столкнуться с такими проблемами, как клавиатурные ловушки, которые показаны ниже.</p>
+<p><img src="/images/accessibility-pic4.gif" alt="Анимированный скриншот клавиатурной ловушки" title="Анимированный скриншот клавиатурной ловушки"></p>
+<p>В примере выше я не могу переместить фокус в поле ‘Date From’, потому что клик по клавише Tab отлавливается в поле Search Terms. Хорошие UI практики говорят о том, что не должно быть клавиатурных ловушек. Вы должны разрабатывать так, чтоб предусмотреть выход из такой ловушки, используя клавишу Esc. Кроме того, в соответствии с рекомендациями раздела 2.1.2 WCAG клавиатурных ловушек быть не должно.</p>
+<p>Порядок следования в DOM и порядок получения фокусов должны быть идентичны.</p>
+<script src="https://gist.github.com/paramsingh88/5c08a09c935fef2acbcdacfe486d0ff5.js"></script>
+&nbsp;
+<script src="https://gist.github.com/paramsingh88/e2f459e8be8de2f63246fb8cef3c4a3c.js"></script>
+
+<p>Изменение порядка следования DOM элементов может сбить с толку ваших пользователей, которые пользуются программами чтения с экрана. Таким образом, это является антипаттерном. На самом деле, ваш tabindex должен всегда находиться в пределах от 0 до -1.</p>
+<p><strong>Семантический HTML</strong>: Использование HTML5 семантически верных тегов может стать очень полезным. Такие теги как <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code> способствуют интерпритации вашего веб-контента. Кроме того, использование этих семантических тегов рекомендуется для SEO (оптимизации для поисковых систем). Эти теги ничто иное, как <code>&lt;div role=””&gt;</code>, т.е. div c аттрибутом role равным “baner” для <code>&lt;header&gt;</code>, “main” для <code>&lt;main&gt;</code>, “contentinfo” для <code>&lt;footer&gt;</code>. Фактически, это был способ написания семантической разметки до появления HTML5.</p>
+<p><img src="/images/accessibility-pic5.gif" alt="Скриншот html раскладки используюя html5 теги" title="Скриншот html раскладки используюя html5 теги"></p>
+<p><strong>ARIA роли</strong>: ARIA роли определяют тип элемента и то, для какой цели он используется.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">role</span>=<span class="string">"alert"</span>&gt;</span></span><br><span class="line">    Please upgrade to the latest version of your browser for the best experience.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Указание роли к элементу помогает браузерам интерпретировать их по своему. Например, если вы добавите роль “button” к div, то он получит свойство получать фокус и начнет вести себя как кнопка.</p>
+<p>Для полного понимания ролей и aria аттрибутов в html5 <a href="https://www.w3.org/TR/wai-aria-practices-1.1/" target="_blank" rel="noopener">w3</a> сделали такую <a href="https://www.w3.org/TR/wai-aria/rdf_model.svg" target="_blank" rel="noopener">простую диаграмку</a>.</p>
+<p><strong>ARIA аттрибуты:</strong> ARIA аттрибуты используются в сочетании с ролями и несут вспомогательную информцию. Например, чтоб помочь программе чтения с экрана прочесть состояние пользовательского флажка вы могли бы использовать <code>aria-checked</code> свойство, как на примере ниже:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">role</span>=<span class="string">"checkbox"</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">aria-checked</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">tabindex</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">id</span>=<span class="string">"myCheckbox"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Также, вы должны при обработке события клика по элементу <code>span</code> изменять значение <code>aria-checked</code> аттрибута вместе с визуальными изменениями элемента.</p>
+<p>А здесь показано иное применение aria аттрибутов, использование свойства аттрибута для <code>aria-label</code>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">aria-label</span>=<span class="string">"author name"</span>&gt;</span>Param Singh<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Дальнейшее изучение классифкации ARIA аттрибутов я предлагаю продолжить <a href="https://www.w3.org/TR/wai-aria/states_and_properties" target="_blank" rel="noopener">здесь</a>.</p>
+<h2 id="ARIA-правила-и-рекомендации"><a href="#ARIA-правила-и-рекомендации" class="headerlink" title="ARIA правила и рекомендации"></a>ARIA правила и рекомендации</h2><p><strong>Используйте семантический HTML везде, где только это возможно:</strong> Всегда используйте тег <code>&lt;header&gt;</code> для шапки вашего приложения потому что у этого тега уже есть роль “banner” установленная не явно. А еще, это хорошо отразится на SEO в будущем.</p>
+<p><strong>Один элемент – одна роль:</strong> Вы должны назначать одному элементу по одной роле.</p>
+<p><strong>Никогада не меняйте нативную роль элемента:</strong> Мы никогда не должны делать нечто подобное:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">role</span>=<span class="string">"button"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Не используйте ненативные теги при существовании нативных:</strong> Я говорю об использовании тегов <code>blockqoute</code> вместо <code>q</code>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">cite</span>=<span class="string">"http://www.imdb.com/character/ch0000672/quotes"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        You know the golden rule, don’t you boy? Those who have the gold make the rules.</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.imdb.com/character/ch0000672/quotes"</span>&gt;</span>Crazy hunch-backed old guy in Aladdin<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Используйте аттрибут <code>alt</code> для изображений:</strong> Мы должны выработать привычку всегда использовать <code>alt</code> внутри тегов <code>&lt;img&gt;</code>, и не только потому, что это правильно с точки зрения ARIA, но еще и для случая, если изображение не удалось загрузить, вы увидите описание этого изображения, такой прием называется Прогрессивным улучшением (Progressive Enhancement). Я не говорю уже о том, что это хорошо для SEO, такие аттрибуты помогают поисковым роботам индексровать ваш контент. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"dog.jpg"</span> <span class="attr">alt</span>=<span class="string">"A golden labrador playing in the park"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">aria-labelledby</span>=<span class="string">"operahouse_1"</span> <span class="attr">role</span>=<span class="string">"group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"operahousesteps.jpg"</span> <span class="attr">alt</span>=<span class="string">"The Sydney Opera House"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">figcaption</span> <span class="attr">id</span>=<span class="string">"operahouse_1"</span>&gt;</span>We saw the opera <span class="tag">&lt;<span class="name">cite</span>&gt;</span>Barber of Seville<span class="tag">&lt;/<span class="name">cite</span>&gt;</span> here!<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Цвет и контраст:</strong> Заботясь о пользователях со слабым зрением мы должны потратить определенное время на выбор правильной палитры для оформления нашего приложения. Основной и вспомогательный цвет должны иметь хорошую контрастность. Мы должны избегать близких цветов текста и div с фоновым. Вместо этого, следует следовать золотому правилу KISS (Keep is Simple Stupid! Делайте как можно проще). Одним из ярких примеров является сайт <a href="https://google.com" target="_blank" rel="noopener">Google.com</a>, он очень дружественен к пользователю потому что он действительно очень простой и белый фон способствует упрощению взаимодействия с пользователем.</p>
+<p>В соответствии с WCAG 2.0 level AA уровень контрасности должен быть 4.5:1 для нормального текста и 3:1 для текста большого размера. Уровень ААА устанавливает требования к контрасности 7:1 для текста нормального размера и 4.5:1 для текста большого размера. Большим текстом считается текст размером от 14 points (обычно это 18.66px) и более или 18 points (обычно это 24px) и более.</p>
+<p>К тому же, на сенсорных устройствах такие элементы как кнопки и поля ввода должны быть достаточно большими чтоб обрабатывать нажатия сенсорных экранов. Оптимальный размер таких элементов для сенсорных экранов должен быть около 48px.</p>
+<p>Вот пример небольшого приложения которое я создал с заботой о доступности.<br><a href="https://restaurants-reviewer.herokuapp.com/" target="_blank" rel="noopener">https://restaurants-reviewer.herokuapp.com/</a></p>
+<h2 id="Вывод"><a href="#Вывод" class="headerlink" title="Вывод"></a>Вывод</h2><p>Одной из тех вещей за что я люблю веб, является то, что веб делает любую информацию в сети доступной. Вы просто должны перейти на веб-сайт. Так что, забота о том, чтоб сделать сайт доступным, находится в нашей зоне ответственности, как разработчика. Запомните одну вещь, создание доступных веб-приложений правильно не только с точки зрения ARIA, но и с точки зрения SEO. </p>
+<p>В конце концов, все что я хочу вам сказать – “Будьте внимательнее!”</p>
+<p>Спасибо</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/translate/">translate</a><a href="/tags/web/">web</a><a href="/tags/accessibility/">accessibility</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>

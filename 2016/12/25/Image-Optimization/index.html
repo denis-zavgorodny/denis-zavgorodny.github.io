@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Оптимизация графики для web | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="Наверное, каждый веб-разработчик знает, что когда речь заходит о производительности и удобстве ипользования каждое изображение на странице имеет огромное значение.">
+  
+
+  
+  
+  <meta name="keywords" content="translate,web,webp,perfomance,JPEG-XR,JPEG-2000">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Оптимизация графики для web"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/images/20161225/CstkNXeVMAAEgvL.jpg" />
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Оптимизация графики для web</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/12/25/Image-Optimization/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-12-25T18:08:43.000Z">
+          2016-12-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>Это перевод статьи <a href="http://calendar.perfplanet.com/2016/image-optimization/" target="_blank" rel="noopener">Image Optimization</a> автора <a href="http://www.standardista.com/" target="_blank" rel="noopener">Estelle Weyl</a>.</p>
+<p>Наверное, каждый веб-разработчик знает, что когда речь заходит о производительности и удобстве ипользования (UX) каждое изображение на странице имеет огромное значение: первые плоды в оптимизации web-страниц может принести именно работа с изображениями. Использование методик сжатия изображений без потерь качества позволяет снизить суммарный размер страницы не нанося ущерба пользовательскому опыту (UX) работы с такими страницами, тем самым, улучшая производительность и увеличивая конверсию. Существует много методов для определения того, какие изображения поддерживаются, и вам остается только подготовить “правильные” изображения и отдать их пользователю. Создание оптимальных изображений для всех пользователей на всех типах устройств должно стать целью всех разработчиков (доступность должна стать еще одной целью, но сейчас не об этом).<br><a id="more"></a></p>
+<h2 id="Как-определить-какое-изображение-показать"><a href="#Как-определить-какое-изображение-показать" class="headerlink" title="Как определить какое изображение показать"></a>Как определить какое изображение показать</h2><p>Существует несколько методик для отображения нужного изображения, например, медиа запросы при использовании фоновых изображений, или использование элементов <code>&lt;picture&gt;</code> и <code>&lt;source&gt;</code> совместно с <code>srcset</code>.<br>Используя <code>CSS @media queries</code> можно отображать различные фоновые изображения в зависимости от размера окна просмотра или плотности пикселей на устройстве пользователя.</p>
+<p>Например, вы можете показать изображение lowres.jpg для старых ноутбуков и hires.jpeg для iPad Pro:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">header</span> &#123;</span><br><span class="line">   <span class="attribute">background-image</span>: <span class="built_in">url</span>(img/hires_header.jpg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">media</span> only screen and (min-device-pixel-ratio: <span class="number">2</span>) and (min-width: <span class="number">1024px</span>) &#123;</span><br><span class="line">   <span class="selector-tag">header</span> &#123;</span><br><span class="line">       <span class="attribute">background-image</span>: <span class="built_in">url</span>(img/hires_header.jpg);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>А как быть с обычными изображениями переднего плана?</p>
+<p>Методика <a href="http://www.standardista.com/responsive-images-clown-car-technique/" target="_blank" rel="noopener">адаптивных изоражений</a> еще с 2013 года была основана на том, что SVG имеет свою свобственную ширину и высоту контейнера, и медиавыражения в них отталкиваются от этих размеров, а не от размеров окна браузера (viewport).<br>К счастью, текущая поддержка браузерами тега <code>&lt;picture&gt;</code> и <code>srcset</code> позволяют не использовать уже этот хак.</p>
+<p>Основоной проблемой в изображениях переднего плана является то, что браузер имеет информацию о размере экрана (viewport) и плотности пикселей на экране, но понятия не имеет о размере загружаемого изображения и того, как оно соотносится с размером экрана. Но, разработчик знает и может указывать их.</p>
+<p>Подобно медиазапросам при помощи тегов <code>&lt;picture</code>, <code>&lt;source&gt;</code> и атрибута <code>srcset</code> разработчик может диктовать браузеру какие изображения отображать для того или иного размера экрана или плотности пикселей.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">"small_lowres.jpg, small_highres.jpg 2x"</span> <span class="attr">media</span>=<span class="string">"(max-width: 768px)"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">"default.jpg, default_highres.jpg 2x"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">"large_lowres.jpg, large_highres.jpg 2x"</span> <span class="attr">media</span>=<span class="string">"(min-width: 1024px)"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"default.jpg"</span> <span class="attr">alt</span>=<span class="string">"image descriptor"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Примечание! Всегда используйте по умолчанию тег <code>&lt;img&gt;</code> внутри каждого <code>&lt;picture&gt;</code>, а также атрибут <code>alt</code> для тега.</p>
+</blockquote>
+<p>Вы можете использовать просто тег <code>&lt;img&gt;</code> без использования <code>&lt;picture&gt;</code> и в теге <code>img</code> указать атрибуты <code>srcset</code> с набором изоражений и <code>sizes</code> для описания области их применения.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"default.jpg"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">srcset</span>=<span class="string">"large.jpg 1024w,</span></span></span><br><span class="line"><span class="tag"><span class="string">        medium.jpg 768w,</span></span></span><br><span class="line"><span class="tag"><span class="string">        default.jpg 420w"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">sizes</span>=<span class="string">"(min-width: 1024px) 1024px,</span></span></span><br><span class="line"><span class="tag"><span class="string">       (min-width: 768px) 90vw,</span></span></span><br><span class="line"><span class="tag"><span class="string">       100vw"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">alt</span>=<span class="string">"image descriptor"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Мы также можем отображать различные типы изображений используя атрибут <code>type</code>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">"photo.jxr"</span> <span class="attr">type</span>=<span class="string">"image/vnd.ms-photo"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">"photo.jp2"</span> <span class="attr">type</span>=<span class="string">"image/jp2"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">source</span> <span class="attr">srcset</span>=<span class="string">"photo.webp"</span> <span class="attr">type</span>=<span class="string">"image/webp"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">"photo.jpg"</span> <span class="attr">alt</span>=<span class="string">"My beautiful face"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Если вас удивляет код выше, JPEG-XR старый MIME image/vnd.ms-photo для Windows Media Photo, проприетарный формат изображений от Microsoft, поддерживаемый IE8 и выше, включая Microsoft Edge. jp2 – это расширение для формата JPEG 2000, который поддерживается браузером Safari. WebP – это формат изоюражений со сжатием без потерь качества и поддерживается на данный момент браузерами Chrome и Opera. А Firefox будет поддерживать форматы графики, как PNG-A, SVG, GIF и JPEG (как в коде выше).</p>
+<p><em>Chrome</em> – <strong>WebP</strong><br><em>IE 9+ / Edge</em> – <strong>JPEG-XR</strong><br><em>Opera</em> – <strong>WebP</strong><br><em>Safari</em> – <strong>JPEG-2000</strong></p>
+<p>Для Firefox и IE8 нужно предусмотреть запасной вариант в виде изображений JPEG или PNG. И хотя Safari и Firefox экспериментируют с поддержкой WebP изображений, пока нет уверенности в том, что такая поддержка вскоре появится. В любом случае, можно проверить поддержку на сайте <a href="http://caniuse.com/#search=webp" target="_blank" rel="noopener">Can I Use</a>.</p>
+<p>Для более детального изучения возможностей есть хорошие онлайн учебники для <a href="https://www.smashingmagazine.com/2013/07/simple-responsive-images-with-css-background-images/" target="_blank" rel="noopener">медиавыражений</a>, <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank" rel="noopener">тега <code>&lt;picture&gt;</code></a> и <a href="https://www.sitepoint.com/how-to-build-responsive-images-with-srcset/" target="_blank" rel="noopener">srcset</a>.</p>
+<h2 id="Сложность-и-количество-кода"><a href="#Сложность-и-количество-кода" class="headerlink" title="Сложность и количество кода"></a>Сложность и количество кода</h2><p>Основной пролемой в таком решении (смотри код выше), это большое количество кода, который необъодимо написать для того, чтоб покрыть как можно больше вариантов размеров экранов и плотностей пикселей. Расставить контрольные точки для каждого разрешения безусловно можно, но это сложно, и вы врядли хотели бы этим заниматься вручную. К счастью, для написания таких условий можно и нужно автоматизировать.</p>
+<p>Оптимальным решением в том случае будет генерация кода на стороне сервера под три из четырех основных критериев, таких как: размер окна (viewport), плотность пикселей, поддержка клиентом формата изображения и отношение размера изображения к размеру экрана. Почему три из четырех? Вы всегда можете использовать все преимущества понимания браузером sourcesets, но вы не используете все комбинации, а лишь некоторые из них.</p>
+<p>Если ваш DOM формируется в браузере только на клиентской стороне при помощи JavaScript, например, как у React приложений, имея информацию о клиентском устройстве вы можете запросить правильное изображение, но пользователи будут какое-то время видеть частично загруженный экран (в то время, пока обрабатывается код на клиенте).</p>
+<p><img src="/images/20161225/CstkNXeVMAAEgvL.jpg" alt="Скриншот профайлера Google Chrome" title="Скриншот профайлера Google Chrome"></p>
+<p>В том случае, когда вы не генерируете весь HTML на стороне клиента, подмена пути к изображению тоже не будет оптимальным решением, так как во время парсинга документа браузер начнет скачивать оригинальное изображение, а затем, когда отработает JavaScript, браузер приступит к скачиванию другого, более оптимального для него, изображения.</p>
+<p>И если вы являетесь сторонником прогрессивного улушения, вы должны понимать, что исходное изображение будет загружено в любом случае после того как HTML документа будет проанализирован.</p>
+<p>К сожалению, подсказки, которые отправляются на сервер с информацией о плотности пикселей экрана или поддержкой WebP, в виде заголовков HTTP запросов были реализованы только в Blink (Chrome и Opera). Когда вы имеете информацию о разрешении и размере экрана пользователя вы можете автоматически отдавать правильные изображения используя прогрессивное улучшение на стороне сервера. При помощи таких заголовков мы можем определить поддержку формата изображения WebP (Chrome и Opera поддерживают такие типы заголовков), разрешение и размер окна устройства клиента. В Instart Logic у нас есть скрипт под названием Nanovisor, который повторяет функциональность HTTP заголовков для браузеров, которые не поддерживают эту технологию, что позволяет нам отправлять клиенту оптимизированные изображения.</p>
+<p>Вы можете также анализировать строку загловка UserAgent вместе с некоторой дополнительной информацией для того, чтобы определить тип поддерживаемых графических файлов у конкретного пользователя. Узнав это, вы можете подменить расширение файла или можете отдать изображение нужного формата но с “неправильным” расширением. Например, если пользователь запросил файл foo.jpg мы можем отдеть ему нужный тип файла, под все тем же именем foo.jpg. В Instart Logic мы отдаем пользователям WebP для Chrome и Opera, и JPEG-XR для Edge без изменения имени файла, мы просто всегда используем .jpg в конце имени файла. Мы пользуемся тем фактом, что все браузеры корректно отображают изображения руководствуясь MIME не обращая внимания на расширение файлов. Таким образом, мы можете создавать одну и туже разметку html для разных браузеров, а со стороны сервера отдавать кажому браузеру нужное изображение.</p>
+<p>Если вы собираетесь генерировать различные форматы изображений на основе поддерки браузером, но с одним расширением файла, вы должны обеспечить сохранение (кеш) изображений на стороне сервера и как-то разделять изображения с одним именем и разным типом содержимого. Либо вам нужно со стороны клиента слать запросы с нужных разширением файла. Если вы знаете лучшее или еще одно решение, дайте мне знать.</p>
+<h2 id="Автоматизация-процесса"><a href="#Автоматизация-процесса" class="headerlink" title="Автоматизация процесса"></a>Автоматизация процесса</h2><p>С появлением такой возможности у браузеров мы можем отдавать пользователю индивидуально настроенные изображения. И в выше мы узнали о том, как сообщить браузеру о том, какое изображение и какого размера использовать. Тем не менее, нам по-прежнему необходимо генерировать изображения различного размера и типа, подбирая, при этом, наилучшую степень сжатия. Вопрос теперь состояит в том, каким образом создать все эти изображения.</p>
+<p>Процесс оптимизации изображений, изменения их размеров и конвертации в различные форматы поддерживаемые тем или иным браузером, должен быть автоматизирован. И желательно при конвертации изображений достигать наивысшей степени сжатия для каждого обрабатываемого изображения.</p>
+<p>Процесс оптимизации изображений может занимать много времени, особенно для сайтов с динамическим содержимым, где количество может исчисляться тысячами, сотнями тысяч или даже миллионами изображений с различными размерами и типами. И в этом случае может помочь программное обеспечение, например, ImageMagick. ImageMagick позволяет конвертировать изображения в различные форматы, такие как: PNG, JPEG, JPEG-2000, GIF и даже WebP. Поддеривается еще множество форматов и конвертировать изображения можно используя командную строку:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert myImg.jpg -quality 78 -define webp:lossless=true myImg.webp</span><br></pre></td></tr></table></figure>
+<p>Приведенная выше команда сохранит копию изображения myImg.jpg в формате WebP, при этом конвертирование будет осуществлено без видимых потерь до качества 78%.<br>Так же, при помощи ImageMagic вы можете изменить размер изображения используя флаг <code>-resize</code>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert myImg.jpg -quality 78 -resize 50% myImg.webp</span><br></pre></td></tr></table></figure>
+<p>Приведенная выше команда создаст новый файл в формате WebP размером 50% от оригинального изображения (myImg.jpg) и качеством 78%.</p>
+<p>При помощи командной строки можно автоматически создавать изображения в нужных вам размерах и качестве. Трудности может вызвать только определение оптимального качества изображения и степени сжатия. И этот шаг, возможно, прийдется выполнять вручную.</p>
+<p>Задача поиска оптимального качества <em>для каждого</em> изображения будет занимать очень много времени или требовать использования большого количества людей. Потому, большинство инструментов для преобразования изображений уменьшают размер файла за счет ухудшения качества изображения, используя общий коэффициент сжатия. Например, когда я оптимизировал изображения для своего сайта с несколькими картинками, я индивидуально подобрал степерь сжатия для них в пределах от 35% до 88%. Для галерей и других проектов с множествами изображений я использовал Adobe Fireworks для автоматизации процесса конвертации и сохранял все изображения с качеством 78%. Большинство программ для автоматизации оптимизации сохраняют изображения с качеством около 80%. Основываясь на своем опыте я выбираю обычно качество 78%. Тем не менее, нет какого-то магичесого универсального числа для выбора качетсва изображения.</p>
+<p>Уровень сжатия сильно зависит от того, что изображено на картинке и, в целом, зависит от уровня детализации. И в зависимости от содержания нужно выставлять степерь сжатия. Чем более детализировано изображение, тем ниже должна быть степерь сжатия (в районе 90%), в то время как изображения с меньшим количеством детализированных участков будут отлично выглядеть даже при качестве ниже 50%.</p>
+<p>Не исключается и автоматизированная настройка качества изображения. Так, платформа Instart Logic’s использует компьютерное зрение и машинное обучение для контентно-зависимой оптимизации изображений. Изображения оптимизируются с учетом размеров и возможностей браузера, качества интернет соединения и оптимальных коэффициентов сжатия изображения без видимых потерь качества. Процесс автоматизированной оптимизации качества изображения, то что мы называем “SmartVision”, строится на основе алгоритмического подхода и машинного обучения для получения адаптивных настроек для каждого изображения в отдельности с наилучшими сочетаниями качества изображения и его веса. Усовершенствованные алгоритмы компьютерного зрения позволяют увеличить процент сжатия изображения без видимых потерь качества. Parvez Ahammad в своей статье еще в 2014 году <a href="https://www.instartlogic.com/blog/each-image-matters-even-among-millions" target="_blank" rel="noopener">описал эти алгоритмы</a>.</p>
+<p>За последние 6 лет браузеры стали работать быстрее, но вместе с тем, выросло среднее время загрузки сайта. И виной тому, в том числе, размер изображений. Современные средства позволяют частично решить эту проблему. Потому, хорошим тоном будет, если вы станете выделять время на оптимизацию изображений.</p>
+<h2 id="От-переводчика"><a href="#От-переводчика" class="headerlink" title="От переводчика"></a>От переводчика</h2><p>В 2015 году я опубликовал статью <a href="/2015/05/20/webp-uzhie-pora/">webp - уже пора?</a>, в которой описал возможности относительно нового на тот момент формата изображения WebP. Спустя более чем полтора года поддержкой формата WebP все еще могут похвастать лишь Chrome и Opera. Но, использование этого формата на нескольких крупных проектах в <a href="https://alterego.biz.ua/" target="_blank" rel="noopener">AlterEGO</a> зарекомендовало себя очень положительно. Мы снизили потребление трафика, загрузку канала и скорость загрузки страниц сайта. При этом, изображения не потеряли в качестве. А это очень важно, например, для интернет магазинов, где от качества изображения напрямую могут зависеть продажи. </p>
+<p>Основной проблемой, с которой нам довелось столкнуться при использовании оптимизированных изображений стала проблема производительности. Большой объем графических файлов (фото для товаров) и постоянные обновления фото не позволяли выполнять прегенерацию. Более того, использование оптимального размера изображения (в зависимости от плотности пикселей экрана и размеров viewport) сделало обязательным условие генерации изображения “по запросу”. Т.е. на лету. Предложенное в моей статье решение с использванием php и библиотеки Imagick для изменения размеров и формата изображений оказалось бесполезным. Время генерации изображения было слишком большим и оно еще больше увеличивалось с увеличением количества запросов. Проблему удалось решить при помощи модуля <a href="https://github.com/pagespeed/ngx_pagespeed" target="_blank" rel="noopener">PageSpeed</a> для <a href="https://nginx.org/ru/" target="_blank" rel="noopener">NGINX</a> и организации кеширования и сохранения сгенерированных изображений на диск. Нам удалось добиться максимального времени генерации изображений в районе 500мс при среднем времени повторной отдачи изображения за 25-30мс. Но, это тема для отдельной статьи.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/translate/">translate</a><a href="/tags/web/">web</a><a href="/tags/webp/">webp</a><a href="/tags/perfomance/">perfomance</a><a href="/tags/JPEG-XR/">JPEG-XR</a><a href="/tags/JPEG-2000/">JPEG-2000</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>bxSlider и недогруженные картинки | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="В версии BxSlider v4.1.2 имеется досадный баг (или фича), который делал мне нервы. Все дело в том, что bxSlider на столько хорош, что умеет делать предварительную загрузку изображений (и даже содержимого iframe) перед тем, как начнет свою полноценную работу. И вот тут то и кроется эта самая фича ака баг.">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="bxSlider и недогруженные картинки"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>bxSlider и недогруженные картинки</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2015/04/12/bxslider-i-niedoghruzhiennyie-kartinki/" rel="bookmark">
+        <time class="entry-date published" datetime="2015-04-11T22:10:52.000Z">
+          2015-04-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>В версии <a href="http://bxslider.com/options" target="_blank" rel="noopener">BxSlider</a> v4.1.2 имеется досадный баг (или фича), который делал мне нервы. Все дело в том, что bxSlider на столько хорош, что умеет делать предварительную загрузку изображений (и даже содержимого iframe) перед тем, как начнет свою полноценную работу. И вот тут то и кроется эта самая фича ака баг.<br><a id="more"></a></p>
+<p>В настройках при инициализации слайдера можно указать <code>preloadImages</code> в двух вариантах: <em>all</em> и <em>visible</em> (значение по умолчанию), т.е. сказать слайдеру предзагружать все или только те изображания, что попадают в “видимые” слайды.<br>Каждый раз, когда стартует <em>bxSlider</em>, исполняется функция <code>setup</code>, которая в себе вызывает <code>loadElements(preloadSelector, start);</code>, ту самую функцию для предварительной загрузки изображений.</p>
+<p>Вторым параметром в нее передается имя функции обратного вызова (<em>callback</em>):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var loadElements = function(selector, callback)&#123;</span><br><span class="line">    var total = selector.find(&apos;img, iframe&apos;).length;</span><br><span class="line">    if (total == 0)&#123;</span><br><span class="line">        callback();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    var count = 0;</span><br><span class="line">    selector.find(&apos;img, iframe&apos;).each(function()&#123;</span><br><span class="line">        $(this).one(&apos;load&apos;, function() &#123;</span><br><span class="line">          if(++count == total) callback();</span><br><span class="line">        &#125;).each(function() &#123;</span><br><span class="line">          if(this.complete) $(this).load();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Все просто: найти все изображения и iframe и слушать событие load (onload), и когда все ресурсы будут загружены - вызвать <code>callback</code>. Отличный план!</p>
+<p>Но, так получилось, что в проекте появились картинки, которых нет. Т.е. тег <code>img</code> есть, у него есть <em>src</em>, который указывает на несуществующую картинку (сервер отдает 404 ошибку).</p>
+<p>Таким образом, событие load срабатывало не для всех изображений и функция <code>start</code> никогда не вызывалась. Слайдер инициализировался, но не полностью. Частично работал в режиме <code>infiniteLoop: false</code>, мог листать слайды вперед. Как следствие, функция <code>onSliderLoad</code> никогда не вызывалась.</p>
+<p>Проблема решается одной строкой, даже не строкой, а добавлением слушателя на событие error:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">selector.find(&apos;img, iframe&apos;).each(function()&#123;</span><br><span class="line">    $(this).one(&apos;load error&apos;, function() &#123;</span><br><span class="line">      if(++count == total) callback();</span><br><span class="line">    &#125;).each(function() &#123;</span><br><span class="line">      if(this.complete) $(this).load();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Как потом оказалось, этот баг пофиксили 8 февраля в одной из свежих версий bxSlider, которая доступна на <a href="https://github.com/stevenwanderski/bxslider-4/commit/fc90b1270fabe551234dbc1deb5b17f279ae4e02" target="_blank" rel="noopener">github</a> (с сайта все еще отдается версия 4.1.2 с багом в коробке). Эх, а я было хотел сделать pull request.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/bxSlider/">bxSlider</a>, <a href="/categories/bxSlider/js/">js</a>, <a href="/categories/bxSlider/js/html/">html</a>, <a href="/categories/bxSlider/js/html/frontend/">frontend</a>
+    </span>
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>
