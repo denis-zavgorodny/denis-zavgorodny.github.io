@@ -4,11 +4,11 @@ menu:
 
 # duoshuo comment
 duoshuo: false
-duoshuo_name: 
+duoshuo_name:
 
 # disqus comment
-disqus: false
-disqus_shortname: 
+disqus: true
+disqus_shortname: i-love-frontend
 
 # google analytics
-googleTrackId: 
+googleTrackId:
