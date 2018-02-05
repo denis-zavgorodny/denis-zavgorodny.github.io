@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Фитнес для CSS | I Love Frontend</title>
+
+  
+  <meta name="author" content="Denis Zavgorodny">
+  
+
+  
+  <meta name="description" content="Много лет назад я мечтал о временах, когда хороший интернет войдет в каждый дом. И он пришел, а вслед за ним - мобильный интернет. Борьба за колибайтики продолжается.
+
+Чем больше лет проекту, чем больше итераций редизайна он пережил - тем больше его кодовая база. Разбиение CSS на модули, компонентные стили, хорошая архитектура frontend составляющей - если все это прошло мимо вас, дочитайте до конца, возможно мои мысли покажутся вам разумными.">
+  
+
+  
+  
+  <meta name="keywords" content="web,css,optimization">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Фитнес для CSS"/>
+
+  <meta property="og:site_name" content="I Love Frontend"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="I Love Frontend" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33355943-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-33355943-1');
+    </script>
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">I Love Frontend</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Фитнес для CSS</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/02/04/Fitness-CSS/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-02-04T21:49:44.000Z">
+          2018-02-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Много лет назад я мечтал о временах, когда хороший интернет войдет в каждый дом. И он пришел, а вслед за ним - мобильный интернет. Борьба за колибайтики продолжается.</p>
+</blockquote>
+<p>Чем больше лет проекту, чем больше итераций редизайна он пережил - тем больше его кодовая база. Разбиение CSS на модули, компонентные стили, хорошая архитектура <em>frontend</em> составляющей - если все это прошло мимо вас, дочитайте до конца, возможно мои мысли покажутся вам разумными.<br><a id="more"></a><br>Итак, ваш CSS стал громоздким и вы подозреваете что далеко не весь код реально нужен? </p>
+<p>Это произошло и со мной. Я начал искать инструмент, который бы мог показать мне какой CSS код используется в проекте, а какой остался от старых итераций разработки. Первым делом подумалось об <a href="https://github.com/giakki/uncss" target="_blank" rel="noopener">uncss</a> от Giacomo Martino. Но, как оказалось, он не очень пригоден для использования на большом проекте с большим количеством страниц, скрытых разделов, авторизациях и прочих штуках, которые зависят от поведения пользователя. Одно дело собрать CSS с нескольких HTML страниц, а совсем другое из работающего интернет магазина с личным кабинетом и внешним видом, зависящем от поведения пользователя.</p>
+<p>В <a href="https://github.com/giakki/uncss" target="_blank" rel="noopener">uncss</a> использован простой подход - собрать все селекторы и проверить их на существование через <code>document.querySelector</code>. Просто и со вкусом. Но, как повторить все действия пользователя и не пропустить ни одной страницы?</p>
+<p>В твиттере <a href="https://twitter.com/webstandards_ru/" target="_blank" rel="noopener">Веб-стандартов</a> публиковалась статья <a href="https://csswizardry.com/2018/01/finding-dead-css/" target="_blank" rel="noopener">Finding Dead CSS</a> Harry Roberts в которой предлагалось маркировать потенциально неиспользуемы CSS код при помощи CSS свойства <code>background-image</code>:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#checkout_wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'/assets/img/dead/checkout_wrapper.gif'</span>);</span><br><span class="line">  // Existing, legacy code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>и ждать. После определенного времени предлагалось проверить <code>access_log</code> файл на наличие в нем строки, содержащей <code>checkout_wrapper.gif</code> что означало бы тот факт, что CSS селектор жив и используется. В противном случае - селектор следует удалить из CSS. </p>
+<p>Очевидно, что такой подход не очень эффективвен при большом количестве CSS, требует много времени, а самое главное - подразумевает тот факт, что нам известно о потенциально неиспользуемых компонентах и блоках. Но сама идея о том, что можно <em>пассивно</em> собирать информацию об используемых CSS селекторах - прекрасна.</p>
+<p>А что если соединить идеи <a href="https://github.com/giakki/uncss" target="_blank" rel="noopener">uncss</a> и <a href="https://csswizardry.com/2018/01/finding-dead-css/" target="_blank" rel="noopener">Harry Roberts</a>? Что для этого понадобится?</p>
+<ul>
+<li><p>получить все селекторы из всех существующих CSS файлов проекта</p>
+</li>
+<li><p>передать их реальным посетителям проекта</p>
+</li>
+<li><p>обработать селекторы на JS, отфильтровать их, оставив только используемые на странице</p>
+</li>
+<li><p>передать отфильтрованные селекторы на сервер для накопления информации</p>
+</li>
+<li><p>через время обработать существующие CSS на основании накопленной информации</p>
+</li>
+</ul>
+<p>Как получить все селекторы? Работать с CSS как с текстом не удобно, эффективнее получить AST при помощи <a href="https://github.com/reworkcss/css" target="_blank" rel="noopener">reworkcss</a> и работать с деревом.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> css = <span class="built_in">require</span>(<span class="string">'css'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> walker = <span class="built_in">require</span>(<span class="string">'./treeRuleWalker'</span>)</span><br><span class="line"><span class="keyword">const</span> baseDir = <span class="string">'path-to-your/css/'</span></span><br><span class="line"><span class="keyword">const</span> destSelectorFile = <span class="string">'selectors.json'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cssRAW = []</span><br><span class="line"><span class="keyword">const</span> selectors = []</span><br><span class="line"></span><br><span class="line">fs.readdirSync(baseDir).forEach(<span class="function"><span class="params">file</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// получаем в cssRAW содержимое CSS файлов проекта</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">cssRAW.map(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; <span class="attr">stylesheet</span>: &#123; rules &#125; &#125; = css.parse(el.data)</span><br><span class="line">    <span class="comment">// обходим дерево и собираем только CSS селекторы</span></span><br><span class="line">    walker(rules, (filtered) =&gt; &#123;</span><br><span class="line">        selectors.push(...filtered) </span><br><span class="line">    &#125;, walker)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// сохраняем результат в виде JSON файла</span></span><br></pre></td></tr></table></figure>
+<p>Полученые таким образом селекторы сохраняем в JSON файл и отдаем посетителям сайта. На стороне сайта проверяем существование каждого селектора на странице при помощи <code>document.querySelector</code>, а результат с отфильтрованными селекторами отдаем обратно на сервер и сохраняем (например, в базу данных).</p>
+<p>Основную работу выполняет пользователь сайта и его браузер. Нам остается лишь ждать пока накопится достаточное количество данных и на основании этих данных очистить существующие CSS проекта.</p>
+<p>В моем случае удалось уменьшить CSS со 156кб до 55кб. При этом данные об используемых CSS селекторах накапливались чуть менее недели.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/web/">web</a><a href="/tags/css/">css</a><a href="/tags/optimization/">optimization</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'i-love-frontend';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 Denis Zavgorodny
+    
+  </p>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88991617-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+  </div>
+</div>
+</body>
+</html>
